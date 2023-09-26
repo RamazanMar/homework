@@ -1,3 +1,5 @@
+import csv
+
 class Phone:
     def __init__(self, number):
         self.phone_number = number
@@ -18,3 +20,10 @@ phone2.accept_call()
 
 phone3 = Phone("867-980-822")
 phone3.accept_call()
+
+with open("result.csv", mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["phone number", "incoming call's"])
+
+    for phone in [phone1, phone2, phone3]:
+        writer.writerow([phone.phone_number, phone.count])
